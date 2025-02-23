@@ -35,5 +35,5 @@ special thanks to:
 
 - [leerob](https://github.com/leerob/leerob.io) - heavily inspired by the clean ui
 - [hackernews](https://github.com/HackerNews/API) - using the news api for home page
-- [tlcheah2](https://github.com/tlcheah2/stoic-quote-lambda-public-api) - using the stoicism quotes api for home page
+- [OmerMohideen](https://github.com/OmerMohideen/programming-quotes-api) - using the programming quotes api for home page
 - [icanhazdadjoke](https://icanhazdadjoke.com) - using the jokes api for home page

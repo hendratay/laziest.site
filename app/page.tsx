@@ -41,17 +41,17 @@ export default function Home() {
         <div>
           <p className="font-semibold mb-1">
             <a
-              href="https://github.com/tlcheah2/stoic-quote-lambda-public-api"
+              href="https://github.com/OmerMohideen/programming-quotes-api"
               target="_blank"
               className="hover:text-blue-600"
             >
-              stoicism quotes
+              programming quotes
               <span className="align-middle">
                 <FontAwesomeIcon icon={faLink} className="h-4 w-4 ml-2" />
               </span>
             </a>
           </p>
-          <StoicismQuotes />
+          <ProgrammingQuotes />
         </div>
         <div>
           <p className="font-semibold mb-1">
@@ -239,10 +239,10 @@ function HackerNewsItem({
   );
 }
 
-function StoicismQuotes() {
+function ProgrammingQuotes() {
   const { data, error } = useSWR("getQuotes", {
     fetcher: async () => {
-      const res = await fetch("https://stoic.tekloon.net/stoic-quote");
+      const res = await fetch("https://programming-quotesapi.vercel.app/api/random");
       return res.json();
     },
     revalidateOnFocus: false,
@@ -257,8 +257,8 @@ function StoicismQuotes() {
 
   return (
     <div>
-      <p className="lowercase">{data.data.quote}</p>
-      <p className="lowercase text-slate-600">- {data.data.author}</p>
+      <p className="lowercase">{data.quote}</p>
+      <p className="lowercase text-slate-600">- {data.author}</p>
     </div>
   );
 }
