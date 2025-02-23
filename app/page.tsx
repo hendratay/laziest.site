@@ -2,13 +2,11 @@
 
 import {
   IconDefinition,
-  faDiscord,
+  faEthereum,
   faGithub,
   faGitlab,
   faGoogleDrive,
   faItchIo,
-  faSpotify,
-  faTwitter,
   faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -18,7 +16,6 @@ import {
   faInbox,
   faLink,
   faN,
-  faSailboat,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
@@ -44,17 +41,17 @@ export default function Home() {
         <div>
           <p className="font-semibold mb-1">
             <a
-              href="https://github.com/lukePeavey/quotable"
+              href="https://github.com/tlcheah2/stoic-quote-lambda-public-api"
               target="_blank"
               className="hover:text-blue-600"
             >
-              famous quotes
+              stoicism quotes
               <span className="align-middle">
                 <FontAwesomeIcon icon={faLink} className="h-4 w-4 ml-2" />
               </span>
             </a>
           </p>
-          <RandomQuotes />
+          <StoicismQuotes />
         </div>
         <div>
           <p className="font-semibold mb-1">
@@ -79,37 +76,6 @@ export default function Home() {
 function Dashboard() {
   return (
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
-      <div>
-        <p className="font-semibold mb-1">chill</p>
-        <ul className="list-outside list-none">
-          <DashboardItem
-            href="https://web.whatsapp.com"
-            icon={faWhatsapp}
-            name="whatsapp"
-          />
-          <DashboardItem
-            href="https://twitter.com"
-            icon={faTwitter}
-            name="twitter"
-          />
-          <DashboardItem
-            href="https://discord.com/app"
-            icon={faDiscord}
-            name="discord"
-          />
-          <DashboardItem
-            href="https://open.spotify.com"
-            icon={faSpotify}
-            name="spotify"
-          />
-          <DashboardItem
-            href="https://youtube.com"
-            icon={faYoutube}
-            name="youtube"
-          />
-          <DashboardItem href="https://netflix.com" icon={faN} name="netflix" />
-        </ul>
-      </div>
       <div>
         <p className="font-semibold mb-1">dev</p>
         <ul className="list-outside list-none">
@@ -137,22 +103,38 @@ function Dashboard() {
         </ul>
       </div>
       <div>
+        <p className="font-semibold mb-1">chill</p>
+        <ul className="list-outside list-none">
+          <DashboardItem
+            href="https://web.whatsapp.com"
+            icon={faWhatsapp}
+            name="whatsapp"
+          />
+          <DashboardItem
+            href="https://youtube.com"
+            icon={faYoutube}
+            name="youtube"
+          />
+          <DashboardItem href="https://netflix.com" icon={faN} name="netflix" />
+        </ul>
+      </div>
+      <div>
         <p className="font-semibold mb-1">crypto</p>
         <ul className="list-outside list-none">
           <DashboardItem
             href="https://tradingview.com/chart/?symbol=binance:btcusdt"
             icon={faChartLine}
-            name="trading view"
+            name="tradingview"
+          />
+          <DashboardItem
+            href="https://dexscreener.com/ethereum"
+            icon={faEthereum}
+            name="dexscreener"
           />
           <DashboardItem
             href="https://coingecko.com"
             icon={faFrog}
             name="coingecko"
-          />
-          <DashboardItem
-            href="https://opensea.io"
-            icon={faSailboat}
-            name="opensea"
           />
         </ul>
       </div>
@@ -257,10 +239,10 @@ function HackerNewsItem({
   );
 }
 
-function RandomQuotes() {
+function StoicismQuotes() {
   const { data, error } = useSWR("getQuotes", {
     fetcher: async () => {
-      const res = await fetch("https://api.quotable.io/quotes/random");
+      const res = await fetch("https://stoic.tekloon.net/stoic-quote");
       return res.json();
     },
     revalidateOnFocus: false,
@@ -275,8 +257,8 @@ function RandomQuotes() {
 
   return (
     <div>
-      <p className="lowercase">{data[0].content}</p>
-      <p className="lowercase text-slate-600">- {data[0].author}</p>
+      <p className="lowercase">{data.data.quote}</p>
+      <p className="lowercase text-slate-600">- {data.data.author}</p>
     </div>
   );
 }

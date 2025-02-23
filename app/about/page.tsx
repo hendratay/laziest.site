@@ -1,6 +1,5 @@
 import {
   IconDefinition,
-  faWhatsapp,
   faLinkedin,
   faGithub,
   faGitlab,
@@ -27,11 +26,6 @@ export default function About() {
         keep everything lightweight or undercontrol.
       </p>
       <div className="flex flex-row flex-wrap my-4">
-        <AboutItem
-          href="https://api.whatsapp.com/send?phone=62895615120283"
-          icon={faWhatsapp}
-          name="whatsapp"
-        />
         <AboutItem
           href="mailto:hendratay96@googlemail.com"
           icon={faInbox}
